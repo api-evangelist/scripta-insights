@@ -1,0 +1,31 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.scriptainsights.com/technology
+summary: >-
+  Scripta Insights documents no rate limits. There is no developer portal, no API
+  reference and no machine-readable contract on any host, so there is no published limit,
+  window, burst, quota or exhaustion status code to record. The only anonymously reachable
+  API surface — the Wix Site MCP endpoint at https://www.scriptainsights.com/_api/mcp —
+  publishes no limits either; its throttling is Wix platform behaviour, not a Scripta
+  commitment, and was not probed (probing to discover a limit would mean deliberately
+  exhausting someone else's quota).
+limit_count: 0
+rate_limits: []
+response_headers: []
+exhaustion_status: null
+retry_after: null
+evidence:
+- url: https://www.scriptainsights.com/technology
+  status: 200
+  note: >-
+    Names "API-only" as one of five integration options (alongside SSO, white-label,
+    simple redirect and a data partner model) but publishes no reference, no base URL and
+    no limits.
+- url: https://api.scriptainsights.com/
+  status: 404
+  note: The API host resolves and answers (Apache Tomcat 404) but serves no public documentation.
+- url: https://www.scriptainsights.com/_api/mcp
+  status: 200
+  note: Live MCP endpoint; no documented limits, no RateLimit-* headers advertised.
+notes:
+- limit_count 0 is a measured absence, not an unchecked field.

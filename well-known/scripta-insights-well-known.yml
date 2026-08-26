@@ -1,0 +1,91 @@
+generated: '2026-08-26'
+method: probed
+source: probe of /.well-known/* on every known Scripta Insights host
+summary: >-
+  No /.well-known/ document is served on any Scripta Insights host. The Wix-hosted
+  marketing site answers 400 for every /.well-known/* path; the Tomcat API host
+  api.scriptainsights.com answers 404; the member portal members.scriptainsights.com is a
+  single-page app whose catch-all returns HTTP 200 with the same 8,041-byte HTML shell for
+  every path, which is NOT a document and is recorded as a miss (see the SPA false-positive
+  rule in the enrichment contract). No security.txt, no OpenID/OAuth metadata, no
+  api-catalog, no ai-plugin.json, no A2A agent card.
+hosts:
+- host: www.scriptainsights.com
+  platform: wix
+  documents:
+  - path: /.well-known/security.txt
+    status: 400
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 400
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 400
+    file: null
+  - path: /.well-known/api-catalog
+    status: 400
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 400
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 400
+    file: null
+  - path: /.well-known/agent.json
+    status: 400
+    file: null
+- host: api.scriptainsights.com
+  platform: apache-tomcat
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+- host: members.scriptainsights.com
+  platform: spa
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: SPA catch-all — 8,041-byte text/html shell, not a document. Treated as a miss.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: SPA catch-all — 8,041-byte text/html shell, not a document. Treated as a miss.
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: SPA catch-all — 8,041-byte text/html shell, not a document. Treated as a miss.
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+notes:
+- No WellKnown or SecurityTxt pointer is wired into apis.yml — nothing returned a real
+  document, and a pointer would assert a surface the provider does not serve.
+- Scripta Insights DOES publish a security contact (security@scriptainsights.com) and a
+  responsible vulnerability disclosure policy, but only as prose on
+  https://www.scriptainsights.com/security — not as an RFC 9116 security.txt. Publishing
+  /.well-known/security.txt would be a one-file fix.

@@ -1,0 +1,56 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.scriptainsights.com/security
+trust_center:
+  present: false
+  hosted: false
+  url: null
+  note: >-
+    Scripta Insights runs no hosted trust center (no trust.scriptainsights.com, no
+    Vanta/Drata/SafeBase/Whistic portal, no document request flow, no subprocessor list, no
+    uptime/status page). What exists is one static HTML page — /security — carrying a
+    "Privacy, Security & Responsible Disclosure" narrative plus two compliance badges.
+security_page:
+  url: https://www.scriptainsights.com/security
+  status: 200
+certifications:
+- name: HIPAA
+  claimed: true
+  evidence: HIPAA-compliant badge displayed on the Security page; site copy states "All information herein is HIPAA protected, treated as highly confidential, and never shared with your employer."
+  report_available: false
+- name: SOC 2
+  claimed: true
+  evidence: AICPA SOC mark displayed on the Security page.
+  report_available: false
+  gaps:
+  - Type (I vs II) not stated
+  - Trust services criteria in scope not stated
+  - Audit period and auditor not stated
+  - No NDA-gated report request flow
+controls_published:
+- Commercial industry-standard encryption of customer data at rest and in transit
+- Secure software development processes spanning policy, people, process and technology
+- Dedicated product security incident response team
+- Anti-virus protection, vulnerability scanning, and periodic penetration testing
+- Formal access management for personnel with access to production systems
+- Formal HR processes — background checks, security awareness training, security and acceptable-use policy, code of conduct
+not_claimed:
+- HITRUST CSF
+- ISO/IEC 27001
+- PCI DSS
+- FedRAMP
+- SOC 3
+privacy:
+  privacy_policy: https://www.scriptainsights.com/privacy
+  california_privacy: https://www.scriptainsights.com/california-privacy
+  legal_consent: https://www.scriptainsights.com/legalconsent
+  terms_of_use: https://www.scriptainsights.com/terms-of-use
+evidence:
+- url: https://www.scriptainsights.com/security
+  status: 200
+- url: https://www.scriptainsights.com/privacy
+  status: 200
+- url: https://www.scriptainsights.com/california-privacy
+  status: 200
+- url: https://trust.scriptainsights.com/
+  status: '<no response> — DNS does not resolve'

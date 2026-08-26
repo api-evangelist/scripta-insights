@@ -1,0 +1,26 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.scriptainsights.com/
+summary: >-
+  Scripta Insights publishes no pricing of any kind. There is no /pricing page in the
+  sitemap (46 pages, fetched 2026-08-26) and no plan, tier, PEPM rate, subscription price
+  or API price list anywhere on the public site. Scripta sells B2B to self-insured
+  employers, health plans, TPAs and benefits consultants through a contact-sales motion —
+  every commercial page routes to https://www.scriptainsights.com/contact. There is no
+  self-serve sign-up and no developer plan.
+plan_count: 0
+currency: null
+billing_period: null
+plans: []
+gate: contact-sales
+evidence:
+- url: https://www.scriptainsights.com/pages-sitemap.xml
+  status: 200
+  note: 46 URLs; no /pricing, /plans or /packages page exists.
+- url: https://www.scriptainsights.com/contact
+  status: 200
+  note: The contact-sales form that stands in for a price list.
+- url: https://www.scriptainsights.com/employers
+  status: 200
+notes:
+- plan_count 0 is a measured absence, not an unchecked field.

@@ -1,0 +1,98 @@
+generated: '2026-08-26'
+method: probed
+source: https://www.scriptainsights.com/_api/mcp
+name: Scripta Insights Site MCP
+slug: scripta-insights
+status: live
+summary: >-
+  Scripta Insights serves a live, anonymous Model Context Protocol endpoint from its own
+  marketing host at https://www.scriptainsights.com/_api/mcp. It is advertised in the
+  provider's own /llms.txt. An unauthenticated JSON-RPC `initialize` and `tools/list`
+  both returned HTTP 200 on 2026-08-26 and enumerated nine tools, saved verbatim to
+  mcp/scripta-insights-mcp-tools.json.
+
+deployment:
+  mode: remote
+  endpoint: https://www.scriptainsights.com/_api/mcp
+  install: null
+  package: null
+  auth: none
+  verified: probed
+
+authorship:
+  authored_by: platform
+  platform: wix
+  note: >-
+    This is the stock Wix Site MCP server, not a Scripta-authored one. serverInfo.name is
+    'Site Visitor Assistant for site "Scripta Insights"' and the tool set is the Wix
+    tenant-identical fingerprint (GetBusinessDetails / SearchInSite / SearchSiteApiDocs /
+    GenerateVisitorToken / CallWixSiteAPI / ExecuteWixAPI / BrowseWixRESTDocsMenu /
+    ReadFullDocsArticle / ReadFullDocsMethodSchema). Only the site name and endpoint URL
+    are Scripta-specific. It exposes the public marketing site's content and Wix business
+    solutions — it does NOT expose the Scripta Rx Navigation platform, Med Mapper, Rx
+    Savings Mapper, member data, claims data, or any pharmacy-benefit capability.
+
+protocol:
+  jsonrpc: '2.0'
+  protocolVersion: '2025-06-18'
+  server_info:
+    name: 'Site Visitor Assistant for site "Scripta Insights" (https://www.scriptainsights.com/_api/mcp)'
+    version: 1.0.0
+  capabilities:
+    tools:
+      listChanged: true
+    logging: {}
+
+transport: streamable-http
+tool_count: 9
+tools:
+- name: GetBusinessDetails
+  summary: Business and site details — timezone, email, phone, fax, address, site name, business schedule.
+  read_only: true
+- name: SearchInSite
+  summary: Free-text search across the public scriptainsights.com site content.
+  read_only: true
+- name: SearchSiteApiDocs
+  summary: Returns the Wix business-solution API documentation applicable to this site.
+  read_only: true
+- name: GenerateVisitorToken
+  summary: Creates an anonymous visitor session token, required before CallWixSiteAPI / ExecuteWixAPI.
+  read_only: true
+- name: CallWixSiteAPI
+  summary: Calls a Wix REST API method (https://www.wixapis.com/...) on the visitor's behalf.
+  read_only: false
+- name: ExecuteWixAPI
+  summary: Runs sandboxed JavaScript against the Wix REST API on the visitor's behalf; annotated destructiveHint true.
+  read_only: false
+- name: BrowseWixRESTDocsMenu
+  summary: Browses the Wix REST API documentation menu hierarchy.
+  read_only: true
+- name: ReadFullDocsArticle
+  summary: Fetches a full article from the Wix developer documentation portal.
+  read_only: true
+- name: ReadFullDocsMethodSchema
+  summary: Fetches the full request/response schema for a Wix API method.
+  read_only: true
+
+x-evidence:
+- fetched: '2026-08-26'
+  url: https://www.scriptainsights.com/_api/mcp
+  method_call: initialize
+  http_status: 200
+  content_type: application/json; charset=utf-8
+- fetched: '2026-08-26'
+  url: https://www.scriptainsights.com/_api/mcp
+  method_call: tools/list
+  http_status: 200
+  content_type: application/json; charset=utf-8
+  result: 9 tools with inputSchema, saved verbatim to mcp/scripta-insights-mcp-tools.json
+- fetched: '2026-08-26'
+  url: https://www.scriptainsights.com/llms.txt
+  http_status: 200
+  note: provider-served llms.txt advertising the MCP endpoint
+
+notes:
+- No OpenAPI/Swagger contract was found for Scripta Insights on any host, so no tool
+  crosswalk (mcp/scripta-insights-tool-crosswalk.yml) could be derived — there are no
+  operationIds to bind these tools to.
+- The tool inputSchemas are real and were captured unauthenticated; nothing here is derived.

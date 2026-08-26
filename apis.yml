@@ -1,23 +1,116 @@
 aid: scripta-insights
 name: Scripta Insights
-description: 'Scripta Insights is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Scripta Insights is a Boston-founded healthcare technology company that sells pharmacy
+  benefit cost containment to self-insured employers, health plans, TPAs and benefits
+  consultants. Its doctor-driven Rx Navigation platform layers on top of an existing plan
+  design and PBM contract — no PBM change, no benefit redesign — and is built on two
+  proprietary engines: Med Mapper, which maps nearly every drug on the market to safe,
+  evidence-based clinical alternatives, and Rx Savings Mapper, which prices those
+  alternatives against the employer's own plan design, formulary, PBM contract and recent
+  patient claims. Members receive personalized savings reports; plan sponsors receive
+  utilization and savings reporting, fiduciary-compliance support, a GLP-1 Navigator and a
+  Provider Navigator prescribing tool. Scripta integrates with cash-pay channels including
+  Mark Cuban Cost Plus Drugs, RxSaveCard and Precision Coupons, and offers customer
+  integration by SSO, an API-only connection, white-label, simple HTTP redirect or a data
+  partner model — none of which is publicly documented.
+image: https://static.wixstatic.com/media/670dfe_c1d7cfb976094245b56a0862497fe945~mv2.jpg/v1/fill/w_2500,h_1312,al_c/670dfe_c1d7cfb976094245b56a0862497fe945~mv2.jpg
 url: https://raw.githubusercontent.com/api-evangelist/scripta-insights/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
-apis: []
+- Healthcare
+- Pharmacy Benefits
+- Prescriptions
+- Health Plans
+- Employee Benefits
+- Digital Health
+- Healthcare Costs
+- Insurance
+- Model Context Protocol
+apis:
+- name: Scripta Insights Site MCP
+  description: >-
+    A live, anonymous Model Context Protocol endpoint served from the Scripta Insights
+    marketing host and advertised in the company's own /llms.txt. It is the stock Wix Site
+    MCP server (platform-authored, not written by Scripta): nine tools that read public
+    site content and business details and call Wix business-solution REST APIs on a
+    visitor's behalf. It does not expose the Rx Navigation platform, Med Mapper, Rx Savings
+    Mapper, claims, eligibility or any member data.
+  humanURL: https://www.scriptainsights.com/llms.txt
+  baseURL: https://www.scriptainsights.com/_api/mcp
+  tags:
+  - Model Context Protocol
+  - Agents
+  - Website
+  properties:
+  - type: MCPServer
+    url: mcp/scripta-insights-mcp.yml
+  - type: LLMsTxt
+    url: llms/scripta-insights-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/scripta-insights-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.scriptainsights.com/
+- type: Blog
+  url: https://www.scriptainsights.com/blog
+- type: Support
+  url: https://www.scriptainsights.com/contact
+- type: Login
+  url: https://members.scriptainsights.com/register/login
+- type: TermsOfService
+  url: https://www.scriptainsights.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.scriptainsights.com/privacy
+- type: LLMsTxt
+  url: llms/scripta-insights-llms.txt
+- type: MCPServer
+  url: mcp/scripta-insights-mcp.yml
+- type: Conformance
+  url: conformance/scripta-insights-conformance.yml
+- type: Compliance
+  url: conformance/scripta-insights-conformance.yml
+- type: Plans
+  url: plans/scripta-insights-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/scripta-insights-rate-limits.yml
+- type: VulnerabilityDisclosure
+  url: security/scripta-insights-vulnerability-disclosure.yml
+- type: Security
+  url: security/scripta-insights-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/scripta-insights-trust-center.yml
+x-enrichment:
+  date: '2026-08-26'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: sales-gate
+  detail: >-
+    Scripta's own Technology page lists "API-only" as one of five customer integration
+    options and the api.scriptainsights.com host resolves and answers (Apache Tomcat), but
+    every documentation path on it 404s and there is no developer portal, reference or
+    machine-readable contract anywhere on the site — API access is obtained through the
+    enterprise contact-sales form, not a published spec.
+  evidence:
+  - url: https://www.scriptainsights.com/technology
+    status: 200
+  - url: https://api.scriptainsights.com/openapi.json
+    status: 404
+  - url: https://www.scriptainsights.com/openapi.json
+    status: 400
+  - url: https://members.scriptainsights.com/api-docs
+    status: 200
+  checked: '2026-08-26'
