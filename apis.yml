@@ -14,6 +14,17 @@ description: >-
   Mark Cuban Cost Plus Drugs, RxSaveCard and Precision Coupons, and offers customer
   integration by SSO, an API-only connection, white-label, simple HTTP redirect or a data
   partner model — none of which is publicly documented.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://static.wixstatic.com/media/670dfe_c1d7cfb976094245b56a0862497fe945~mv2.jpg/v1/fill/w_2500,h_1312,al_c/670dfe_c1d7cfb976094245b56a0862497fe945~mv2.jpg
 url: https://raw.githubusercontent.com/api-evangelist/scripta-insights/refs/heads/main/apis.yml
 x-type: company
