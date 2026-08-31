@@ -42,6 +42,17 @@ tags:
 - Digital Health
 - Healthcare Costs
 - Insurance
+- MCP
+tags_raw:
+- Company
+- Healthcare
+- Pharmacy Benefits
+- Prescriptions
+- Health Plans
+- Employee Benefits
+- Digital Health
+- Healthcare Costs
+- Insurance
 - Model Context Protocol
 apis:
 - name: Scripta Insights Site MCP
@@ -55,6 +66,10 @@ apis:
   humanURL: https://www.scriptainsights.com/llms.txt
   baseURL: https://www.scriptainsights.com/_api/mcp
   tags:
+  - MCP
+  - Agents
+  - Website
+  tags_raw:
   - Model Context Protocol
   - Agents
   - Website
